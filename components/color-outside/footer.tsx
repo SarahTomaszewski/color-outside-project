@@ -87,7 +87,7 @@ export function Footer({
           </p>
 
           <a
-            href="https://arrived.happily.com/signup?utm_source=event-page&utm_medium=footer&utm_campaign=signup"
+            href="https://teamhappily.com/arrived?utm_source=sample-page&utm_medium=web&utm_campaign=design-magic&utm_content=sample003"
             target="_blank"
             rel="noopener noreferrer"
             className="co-focus shrink-0 transition-opacity duration-200 hover:opacity-70"
