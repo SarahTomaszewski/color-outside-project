@@ -102,7 +102,7 @@ export function Footer({
             href="https://teamhappily.com/arrived?utm_source=sample-page&utm_medium=web&utm_campaign=design-magic&utm_content=sample003"
             target="_blank"
             rel="noopener noreferrer"
-            className="co-focus group/arrived inline-flex w-fit shrink-0 items-center gap-3 transition-opacity duration-200 hover:opacity-70"
+            className="co-focus group/arrived inline-flex w-fit shrink-0 items-center gap-3"
           >
             <Image
               src="/arrived-logo.svg"
@@ -112,7 +112,7 @@ export function Footer({
               className="h-[18px] w-auto object-contain md:h-5"
               draggable={false}
             />
-            <span className="font-grotesk text-base leading-none md:text-lg">
+            <span className="font-open-sans text-base leading-none underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-200 group-hover/arrived:decoration-current md:text-lg">
               Make an entrance
             </span>
             <svg

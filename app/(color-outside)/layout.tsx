@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Narrow, Big_Shoulders } from "next/font/google";
+import { Archivo_Narrow, Big_Shoulders, Open_Sans } from "next/font/google";
 
 import "../globals.css";
 
@@ -12,6 +12,13 @@ const bigShoulders = Big_Shoulders({
 
 const archivoNarrow = Archivo_Narrow({
   variable: "--font-archivo",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+/* Only the Arrived credit uses this — it's their lockup, not the festival's. */
+const openSans = Open_Sans({
+  variable: "--font-open-sans-src",
   subsets: ["latin"],
   display: "swap",
 });
@@ -34,7 +41,7 @@ export default function ColorOutsideLayout({
   return (
     <html
       lang="en"
-      className={`${bigShoulders.variable} ${archivoNarrow.variable} scroll-smooth antialiased`}
+      className={`${bigShoulders.variable} ${archivoNarrow.variable} ${openSans.variable} scroll-smooth antialiased`}
       // The inline script below adds `js` before hydration, so the server and
       // client class lists differ by design.
       suppressHydrationWarning

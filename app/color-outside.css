@@ -22,6 +22,7 @@
 @theme inline {
   --font-display: var(--font-big-shoulders);
   --font-grotesk: var(--font-archivo);
+  --font-open-sans: var(--font-open-sans-src);
 }
 
 /* ---------- Editorial microtype + display ---------- */
