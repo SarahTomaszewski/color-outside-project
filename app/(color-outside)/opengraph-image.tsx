@@ -10,12 +10,15 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/* Palette mirrors app/color-outside.css. Satori has no CSS-variable support,
-   so the values are repeated here rather than referenced. */
-const CREAM = "#fdf8f5";
+/* Mirrors the hero: blush ground, the same 45px bar field, the eyebrow line
+   and where/when up top, and the wordmark running full bleed along the
+   bottom. Satori has no CSS variables, so the palette is repeated here. */
+const BLUSH = "#f2a8ec";
 const INK = "#1b1830";
 const COBALT = "#2233d6";
-const BUTTER = "#ffe372";
+
+/** Matches the hero's `CELL_W` — 45px bar, 45px gap. */
+const BAR_W = 45;
 
 /** The wordmark's eight-point star, drawn inline so no asset is needed. */
 const STAR =
@@ -27,23 +30,30 @@ export default async function OpengraphImage() {
     readFile(join(process.cwd(), "assets/ArchivoNarrow-Regular.ttf")),
   ]);
 
+  const micro = {
+    fontFamily: "Archivo",
+    fontSize: 24,
+    letterSpacing: 3,
+    textTransform: "uppercase" as const,
+    color: INK,
+  };
+
   return new ImageResponse(
     (
       <div
         style={{
+          position: "relative",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: CREAM,
+          background: BLUSH,
           color: INK,
-          padding: "64px 72px",
-          position: "relative",
+          padding: "52px 48px 40px",
         }}
       >
-        {/* the striped frame, as flat bars */}
-        {/* Satori doesn't resolve the `inset` shorthand — offsets are explicit. */}
+        {/* the hero's bar field, flattened to static bars */}
         <div
           style={{
             position: "absolute",
@@ -54,96 +64,87 @@ export default async function OpengraphImage() {
             display: "flex",
           }}
         >
-          {Array.from({ length: 18 }).map((_, i) => (
-            <div
-              key={i}
-              style={{
-                width: 32,
-                height: "100%",
-                marginRight: 38,
-                background: COBALT,
-                opacity: 0.16,
-              }}
-            />
-          ))}
+          {Array.from({ length: Math.ceil(size.width / (BAR_W * 2)) }).map(
+            (_, i) => (
+              <div
+                key={i}
+                style={{
+                  width: BAR_W,
+                  height: "100%",
+                  marginRight: BAR_W,
+                  background: INK,
+                  opacity: 0.055,
+                }}
+              />
+            ),
+          )}
         </div>
 
+        {/* eyebrow left, where/when right — the hero's two columns */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: 48,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              maxWidth: 640,
+              fontFamily: "BigShoulders",
+              fontSize: 58,
+              lineHeight: 0.95,
+              letterSpacing: -1,
+              textTransform: "uppercase",
+            }}
+          >
+            {EVENT.eyebrow}
+          </div>
+
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: 10, textAlign: "right" }}
+          >
+            <div style={micro}>{EVENT.date}</div>
+            <div style={micro}>{EVENT.time}</div>
+            <div style={micro}>{EVENT.place}</div>
+          </div>
+        </div>
+
+        {/* the hero's tagline, holding the middle of the frame */}
+        <div
+          style={{
+            display: "flex",
+            maxWidth: 760,
+            fontFamily: "Archivo",
+            fontSize: 32,
+            lineHeight: 1.35,
+            color: INK,
+            opacity: 0.85,
+          }}
+        >
+          {EVENT.tagline}
+        </div>
+
+        {/* full-bleed wordmark, as in the hero */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 18,
-            fontFamily: "Archivo",
-            fontSize: 26,
-            letterSpacing: 4,
+            justifyContent: "center",
+            fontFamily: "BigShoulders",
+            fontSize: 196,
+            lineHeight: 0.78,
+            letterSpacing: -7,
             textTransform: "uppercase",
           }}
         >
-          <div style={{ width: 18, height: 18, background: COBALT }} />
-          <div>{`${EVENT.date} · ${EVENT.startTime} · ${EVENT.place}`}</div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontFamily: "BigShoulders",
-              fontSize: 190,
-              lineHeight: 0.84,
-              letterSpacing: -6,
-              textTransform: "uppercase",
-            }}
-          >
-            <div>Color</div>
-            <svg width={118} height={118} viewBox="0 0 100 100" style={{ margin: "0 6px" }}>
-              <path d={STAR} fill={COBALT} />
-            </svg>
-            <div>Outside</div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              marginTop: 26,
-              fontFamily: "Archivo",
-              fontSize: 34,
-              color: INK,
-              opacity: 0.85,
-            }}
-          >
-            {EVENT.tagline}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              display: "flex",
-              background: COBALT,
-              color: BUTTER,
-              fontFamily: "BigShoulders",
-              fontSize: 34,
-              letterSpacing: 1,
-              textTransform: "uppercase",
-              padding: "16px 34px",
-              borderRadius: 999,
-            }}
-          >
-            Get your ticket — it&apos;s free
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Archivo",
-              fontSize: 24,
-              letterSpacing: 3,
-              textTransform: "uppercase",
-              opacity: 0.7,
-            }}
-          >
-            {`Hosted by ${EVENT.host}`}
-          </div>
+          <div>Color</div>
+          <svg width={124} height={124} viewBox="0 0 100 100" style={{ margin: "0 4px" }}>
+            <path d={STAR} fill={COBALT} />
+          </svg>
+          <div>Outside</div>
         </div>
       </div>
     ),
