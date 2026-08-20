@@ -384,18 +384,24 @@ export function IconLink({
   href,
   label,
   path,
+  external = false,
   className = "h-14 w-14",
 }: {
   href: string;
   label: string;
   /** 24x24 glyph path — see `GLYPH`. */
   path: string;
+  /** Opens in a new tab. Leave off for `mailto:`, which shouldn't. */
+  external?: boolean;
   className?: string;
 }) {
   return (
     <a
       href={href}
       aria-label={label}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : null)}
       className={`co-focus group/icon relative grid shrink-0 place-items-center ${className}`}
     >
       <BlobShape

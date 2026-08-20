@@ -11,8 +11,17 @@ const SPLIT = Math.ceil(FOOTER_LINKS.length / 2);
 const LINK_COLUMNS = [FOOTER_LINKS.slice(0, SPLIT), FOOTER_LINKS.slice(SPLIT)];
 
 const SOCIALS = [
-  { label: "Email", path: GLYPH.email },
-  { label: "LinkedIn", path: GLYPH.linkedin },
+  {
+    label: "Email",
+    href: "mailto:arrived@teamhappily.com",
+    path: GLYPH.email,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/happily",
+    external: true,
+    path: GLYPH.linkedin,
+  },
 ];
 
 export function Footer({
@@ -105,7 +114,12 @@ export function Footer({
           <ul className="flex flex-wrap gap-2">
             {SOCIALS.map((s) => (
               <li key={s.label}>
-                <IconLink href="#" label={s.label} path={s.path} />
+                <IconLink
+                  href={s.href}
+                  label={s.label}
+                  path={s.path}
+                  external={s.external}
+                />
               </li>
             ))}
           </ul>
