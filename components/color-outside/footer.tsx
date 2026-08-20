@@ -112,7 +112,7 @@ export function Footer({
               className="h-[18px] w-auto object-contain md:h-5"
               draggable={false}
             />
-            <span className="font-open-sans text-base leading-none underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-200 group-hover/arrived:decoration-current md:text-lg">
+            <span className="font-open-sans text-base leading-none underline decoration-transparent decoration-1 underline-offset-4 transition-colors duration-200 group-hover/arrived:decoration-current md:text-lg">
               Make an entrance
             </span>
             <svg
