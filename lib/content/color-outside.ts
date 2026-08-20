@@ -129,7 +129,7 @@ export const SPEAKERS = [
     bio: "Nia works across identity, editorial, and cultural projects with a focus on expressive visual systems and unexpected storytelling.",
     note: "Her philosophy: if an idea feels completely comfortable, it probably isn't finished yet.",
     image: {
-      src: "/image-woman-1.png",
+      src: "/image-woman-1.webp",
       alt: "Portrait of Nia Brooks",
     },
   },
@@ -140,7 +140,7 @@ export const SPEAKERS = [
     bio: "Julian blends photography, collage, typography, and digital experimentation to create work that sits somewhere between graphic design and visual chaos.",
     note: "He'll be talking about building a personal visual language without turning yourself into a “brand.”",
     image: {
-      src: "/image-man-1.png",
+      src: "/image-man-1.webp",
       alt: "Portrait of Julian Park",
     },
   },
@@ -151,7 +151,7 @@ export const SPEAKERS = [
     bio: "Maya creates playful digital experiences that mix interaction design, code, and emerging technology.",
     note: "Her work explores how new tools can create more room for curiosity—not just more efficiency.",
     image: {
-      src: "/image-woman-2.png",
+      src: "/image-woman-2.webp",
       alt: "Portrait of Maya Chen",
     },
   },
@@ -162,7 +162,7 @@ export const SPEAKERS = [
     bio: "Ellis is known for bold shapes, strange characters, and a process built around sketching badly until something good appears.",
     note: "Their session is about letting go of the need to make every creative decision look intentional.",
     image: {
-      src: "/image-man-2.png",
+      src: "/image-man-2.webp",
       alt: "Portrait of Ellis Monroe",
     },
   },
@@ -208,10 +208,11 @@ export const LOCATION = {
   address: "Presidio of San Francisco, CA 94129",
   mapQuery: "Presidio of San Francisco",
   /* Local files from `public/`. Next runs with `unoptimized: true`, so these
-     ship at their source size — export them at the size they render. */
+     ship at their source size — export them at the size they render. The
+     high-res masters live in `image-sources/`, which git ignores. */
   images: [
     {
-      src: "/presidio-park-2.jpg",
+      src: "/presidio-park-2.webp",
       alt: "Presidio Park, San Francisco",
     },
     {

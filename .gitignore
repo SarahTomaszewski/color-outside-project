@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# high-res image masters — the optimised versions in public/ are what ship
+image-sources/
