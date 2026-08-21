@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "../globals.css";
 
+import { Analytics } from "@/components/analytics";
 import { EventShell } from "@/components/event-shell";
 import { styleValue } from "@/components/helpers";
 import { getPublicEvent } from "@/lib/happily/queries";
@@ -53,6 +54,9 @@ export default async function EventLayout({
       lang="en"
       className={`${openSans.variable} ${openSans.className} h-full antialiased`}
     >
+      <head>
+        <Analytics />
+      </head>
       <body style={eventVars} className="min-h-full flex flex-col">
         <EventShell eventData={eventData}>{children}</EventShell>
       </body>

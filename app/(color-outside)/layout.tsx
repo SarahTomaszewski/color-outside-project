@@ -3,6 +3,8 @@ import { Archivo_Narrow, Big_Shoulders, Open_Sans } from "next/font/google";
 
 import "../globals.css";
 
+import { Analytics } from "@/components/analytics";
+
 const bigShoulders = Big_Shoulders({
   variable: "--font-big-shoulders",
   subsets: ["latin"],
@@ -57,6 +59,8 @@ export default function ColorOutsideLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
+
+        <Analytics />
       </head>
       <body className="co-page bg-cream font-grotesk text-ink">{children}</body>
     </html>
