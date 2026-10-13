@@ -89,13 +89,15 @@ export function Footer({
           </div>
         ) : null}
 
-        {/* bottom row: copyright, platform credit, socials */}
+        {/* bottom row: copyright, platform credit, socials. Three equal
+            columns on wide screens so the credit sits at the true centre,
+            whatever the widths of its neighbours. */}
         <div
-          className={`flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between ${
+          className={`flex flex-col items-center gap-8 text-center xl:grid xl:grid-cols-[1fr_auto_1fr] xl:text-left ${
             full ? "mt-16 border-t border-ink/15 pt-8" : ""
           }`}
         >
-          <p className="co-micro opacity-70">
+          <p className="co-micro opacity-70 xl:justify-self-start">
             © {new Date().getFullYear()} Bright Hours Studio
           </p>
 
@@ -106,7 +108,7 @@ export function Footer({
             href={ARRIVED_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="co-focus group/arrived inline-flex w-fit max-w-full shrink-0 flex-wrap items-center gap-2"
+            className="co-focus group/arrived inline-flex w-fit max-w-full shrink-0 flex-wrap items-center justify-center gap-2 font-open-sans"
           >
             <Image
               src="/logos/logo.svg"
@@ -128,7 +130,7 @@ export function Footer({
             </span>
           </a>
 
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap justify-center gap-2 xl:justify-self-end">
             {SOCIALS.map((s) => (
               <li key={s.label}>
                 <IconLink
