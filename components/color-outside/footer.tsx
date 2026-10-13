@@ -1,3 +1,4 @@
+import { ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 
 import { EVENT, NAV } from "@/lib/content/color-outside";
@@ -9,6 +10,9 @@ import { GLYPH, IconLink, Wordmark } from "./primitives";
 const FOOTER_LINKS = [...NAV, { label: "Tickets", href: "#tickets" }];
 const SPLIT = Math.ceil(FOOTER_LINKS.length / 2);
 const LINK_COLUMNS = [FOOTER_LINKS.slice(0, SPLIT), FOOTER_LINKS.slice(SPLIT)];
+
+const ARRIVED_URL =
+  "https://teamhappily.com/arrived?utm_source=starter-kit&utm_medium=referral&utm_campaign=arrived_sites";
 
 const SOCIALS = [
   {
@@ -99,34 +103,29 @@ export function Footer({
               single unit, so splitting them would give two targets for the
               same destination. */}
           <a
-            href="https://teamhappily.com/arrived?utm_source=sample-page&utm_medium=web&utm_campaign=design-magic&utm_content=sample003"
+            href={ARRIVED_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="co-focus group/arrived inline-flex w-fit shrink-0 items-center gap-3"
+            className="co-focus group/arrived inline-flex w-fit max-w-full shrink-0 flex-wrap items-center gap-2"
           >
             <Image
-              src="/arrived-logo.svg"
-              width={92}
-              height={14}
-              alt="Arrived"
-              className="h-[18px] w-auto object-contain md:h-5"
+              src="/logos/logo.svg"
+              alt="Happily Arrived"
+              width={217}
+              height={28}
+              className="h-5 w-auto shrink-0"
               draggable={false}
             />
-            <span className="font-open-sans text-base leading-none underline decoration-transparent decoration-1 underline-offset-4 transition-colors duration-200 group-hover/arrived:decoration-current md:text-lg">
-              Make an entrance
+            <span className="flex items-center gap-1">
+              <span className="text-sm leading-5 underline decoration-transparent decoration-1 underline-offset-4 transition-colors duration-200 group-hover/arrived:decoration-current group-focus-visible/arrived:decoration-current">
+                Make an entrance
+              </span>
+              <ArrowUpRightIcon
+                size={16}
+                strokeWidth={1.25}
+                className="shrink-0 transition-transform duration-200 group-hover/arrived:translate-x-0.5 group-hover/arrived:-translate-y-0.5"
+              />
             </span>
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/arrived:translate-x-0.5 group-hover/arrived:-translate-y-0.5 md:h-[18px] md:w-[18px]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M7 17 17 7M8 7h9v9" />
-            </svg>
           </a>
 
           <ul className="flex flex-wrap gap-2">
